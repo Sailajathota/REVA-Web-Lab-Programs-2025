@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Growing and Shrinking</title>
+</head>
+<body>
+    <center>
+        <p id="demo">TEXT</p>
+    </center>
+    <script>
+        // Define variables at the document level
+        var size = 5; // Initial font size
+        var growing = true; // Flag to track growth or shrinkage
+        var ids = document.getElementById("demo"); // Reference to the text element
+
+        // Function to handle the animation logic
+        function animateText() {
+            if (growing) {
+                // Growing phase
+                size += 5;
+                ids.innerHTML = "TEXT GROWING";
+                ids.setAttribute("style", "font-size:" + size + "px; color:red");
+
+                // Switch to shrinking when size reaches 50px
+                if (size >= 50) {
+                    growing = false;
+                }
+            } else {
+                // Shrinking phase
+                size -= 5;
+                ids.innerHTML = "TEXT SHRINKING";
+                ids.setAttribute("style", "font-size:" + size + "px; color:blue");
+
+                // Switch back to growing when size reaches 5px
+                if (size <= 5) {
+                    growing = true;
+                }
+            }
+        }
+
+        // Start the animation when the page loads
+        var intervalId = setInterval(animateText, 100); // Run every 100 milliseconds
+    </script>
+</body>
+</html>
